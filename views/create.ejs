@@ -1,0 +1,54 @@
+<% include header %>
+
+    <div class="container">
+        <form method="post" class="form create">
+            <div>
+                <label>标题：</label>
+                <input placeholder="" type="text" name="title">
+            </div>
+
+            <div>
+                <label>类型：</label>                    
+                <select name="tag">
+                    <% for(var i=0; i < allTag.length; i++) {%>
+                        <option value ="<%= allTag[i].id %>">
+                            <%= allTag[i].tag_name %>
+                        </option>
+                    <% } %>
+                </select>
+            </div>
+
+            <div>
+                <label>内容：</label>
+                <textarea name="content" id="" cols="42" rows="10"></textarea>
+            </div>
+            <div class="submit">发表</div>
+        </form>
+    </div>
+    <script>
+
+        $('.submit').click(() => {
+
+            $.ajax({
+                url: '/system/create',
+                data: $('.form').serialize(),
+                type: 'POST',
+                dataType: 'json',
+                success: function(result) {
+
+                    if (result) {
+                        alert('发布成功');
+                        window.location.href = "/system/posts";
+                    } else {
+                        alert('发布失败');
+                    }
+                },
+                error: function() {
+                    alert('异常')
+                }
+            })
+
+        })
+    </script>
+
+<% include footer %>

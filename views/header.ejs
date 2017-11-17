@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>docment</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="http://localhost:3000/static/style.css">
+    <link rel="stylesheet" href="http://localhost:3000/static/reset.css">
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <header>
+        <div class="user_name">
+            user:
+            <% if(session.user) {%>
+                <%= session.user %>
+            <% } %>
+
+            <% if(!session.user){ %>
+                未登录
+            <% } %>
+        </div>
+
+        <div class="user_right">
+            <%  if(session.user){ %>
+                <div class="has_user">
+                    <a href="/system/posts">全部文章</a>
+                    <a href="/system/create">发表文章</a>
+                    <span class="signout">登出</span>
+                </div>
+                <% } %>
+                
+                <% if(!session.user){ %>
+                    <div class="none_user">
+                        <a href="/system/posts">全部文章</a>
+                        <a href="/system/signup">注册</a>
+                        <a href="/system/signin">登录</a>
+                    </div>
+                <% } %>
+        </div>
+    </header>
+    <script>
+
+        $('.signout').click(() => {
+            $.ajax({
+                url: "/system/signout",
+                type: "GET",
+                cache: false,
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg) {
+                        alert('登出成功')
+                        window.location.href = "/system/signin"
+                    }
+                },
+                error: function () {
+                    alert('异常');
+                }
+            })
+        })
+    </script>

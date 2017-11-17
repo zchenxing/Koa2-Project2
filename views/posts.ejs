@@ -1,0 +1,55 @@
+<% include header %>
+
+    <div id="app">
+        <button id="btn">第二</button>
+        <div class="content-center">
+            <ul>
+                <% for(var i in postList) {%>
+                    <li>
+                        <div class="post-item">
+                            <div>标题：
+                                <%= postList[i].title %>
+                            </div>
+                            <div>内容：
+                                <%= postList[i].content %>
+                            </div>
+                            <div>浏览量：
+                                <%= postList[i].pv %>
+                            </div>
+                            <div>标签：
+                                <%= postList[i].tag_name %>
+                            </div>
+                            <div>作者：
+                                <%= postList[i].name %>
+                            </div>
+                            <div>创建时间：
+                                <%= postList[i].create_date %>
+                            </div>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+
+    <style>
+        .content-center {
+            max-width: 800px;
+            margin: 0 auto;
+            background: palegoldenrod;
+        }
+
+        .post-item {
+            margin: 40px 20px 20px 20px;
+        }
+    </style>
+
+    <script>
+       
+        $('#btn').click(() => {
+            window.location.href = '/system/posts/2'
+        })
+
+    </script>
+
+    <% include footer %>
