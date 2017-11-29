@@ -2,10 +2,14 @@ const router = require('koa-router')()
 const userModel = require('../controller/taskDB')
 
 
+/**
+ * 进入创建页面
+ */
 router.get('/create', async (ctx, next) => {
 
     var res = {}
 
+    // 获取tag标签，用于选择文章标签类型
     await userModel.findTag().then(result => {
         res = JSON.parse(JSON.stringify(result)) 
     })  
@@ -16,7 +20,9 @@ router.get('/create', async (ctx, next) => {
     })
 })
 
-
+/**
+ * 创建文章
+ */
 router.post('/create', async (ctx, next) => {
 
     let post = {
@@ -29,7 +35,6 @@ router.post('/create', async (ctx, next) => {
     await userModel.insertPost([
         post.title, post.content, post.u_id, post.t_id
     ]).then(result => {
-        console.log(JSON.stringify(result));
         ctx.body = true;
     }).catch(error => {
         ctx.body = false;

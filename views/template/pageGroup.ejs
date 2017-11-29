@@ -1,0 +1,23 @@
+<div class="page-group-box">
+    <ul>
+        <li class="page-group-item ">
+            <a href="/system/posts?page=1">首页</a>
+        </li>
+        <% for(var i = 0; i < totalPage; i++) { %>
+            <% if(currentPage == (i + 1)) {%>
+            <li class="page-group-item page-group-item-current">
+            <%} else {%>
+            <li class="page-group-item"> 
+            <% } %>
+                <a href="/system/posts?page=<%= i + 1 %>">
+                    <%= i + 1 %>
+                </a>
+            </li>
+        <%}%>
+        <li class="page-group-item ">
+            <a href="/system/posts?page=<%= totalPage %>">尾页</a>
+        </li>
+    </ul>
+</div>
+
+<link rel="stylesheet" href="/static/pageGroup.css">

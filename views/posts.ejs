@@ -1,28 +1,36 @@
 <% include header %>
 
-    <div id="app">
-        <button id="btn">第二</button>
+    <link rel="stylesheet" href="/static/posts.css">
+
+    <div class="main-box">
         <div class="content-center">
             <ul>
                 <% for(var i in postList) {%>
                     <li>
-                        <div class="post-item">
-                            <div>标题：
-                                <%= postList[i].title %>
+                        <div class="row post-item">
+                            <div class="col-md-12 h4 post-item-title">
+                                <a href="/system/p?id=<%= postList[i].id %>">
+                                    <%= postList[i].title %>                                        
+                                </a>
                             </div>
-                            <div>内容：
+
+                            <div class="col-md-12">
                                 <%= postList[i].content %>
                             </div>
-                            <div>浏览量：
+
+                            <div class="col-md-3">浏览量：
                                 <%= postList[i].pv %>
                             </div>
-                            <div>标签：
+
+                            <div class="col-md-3">标签：
                                 <%= postList[i].tag_name %>
                             </div>
-                            <div>作者：
+                            
+                            <div class="col-md-3">作者：
                                 <%= postList[i].name %>
                             </div>
-                            <div>创建时间：
+
+                            <div class="col-md-3">创建：
                                 <%= postList[i].create_date %>
                             </div>
                         </div>
@@ -30,26 +38,9 @@
                 <% } %>
             </ul>
         </div>
+
+        <% include template/pageGroup %>
+        
     </div>
-
-    <style>
-        .content-center {
-            max-width: 800px;
-            margin: 0 auto;
-            background: palegoldenrod;
-        }
-
-        .post-item {
-            margin: 40px 20px 20px 20px;
-        }
-    </style>
-
-    <script>
-       
-        $('#btn').click(() => {
-            window.location.href = '/system/posts/2'
-        })
-
-    </script>
-
+    
     <% include footer %>

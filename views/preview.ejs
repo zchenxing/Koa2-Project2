@@ -1,0 +1,17 @@
+<% include header %>
+
+    <link rel="stylesheet" href="/static/posts.css">
+
+    <div class="main-box">
+        <div class="content-center">
+            
+            <h2 class="text-center"><%= postsData.title %></h2>
+            <div class="row">
+                <span class="col-md-10"><%= postsData.tag %></span>
+                <span class="col-md-10"><%= postsData.create_date %></span>
+            </div>
+            <p><%= postsData.content %></p>
+        </div>
+    </div>
+
+<% include footer %>

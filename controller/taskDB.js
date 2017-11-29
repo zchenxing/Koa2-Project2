@@ -27,6 +27,7 @@ let insertPost = function (value) {
 }
 
 
+
 // 更新浏览数
 let updatePostPv = function (value) {
     let _sql = "update posts set pv=? where id=?"
@@ -36,7 +37,9 @@ let updatePostPv = function (value) {
 
 // 通过文章id查找
 let findDataById = function (id) {
-    let _sql = `SELECT * from posts where id="${id}"`
+    let _sql = `
+        SELECT *,DATE_FORMAT(create_date, '%Y-%m-%d %h:%m:%s') AS create_date
+        FROM posts WHERE id="${id}"`
     return query(_sql)
 }
 
@@ -44,7 +47,7 @@ let findDataById = function (id) {
 // 查询所有文章
 let findAllPost = function (page, limit) {
     let _sql = 
-        `SELECT title, content, pv,tag_name, name, DATE_FORMAT(posts.create_date, '%Y-%c-%d %h:%i:%s') AS create_date
+        `SELECT posts.id, title, content, pv,tag_name, name, 'DATE_FORMAT'(posts.create_date, '%Y-%m-%d') AS create_date
         FROM posts
         LEFT JOIN tag
         ON posts.t_id=tag.id
@@ -55,6 +58,11 @@ let findAllPost = function (page, limit) {
     return query(_sql)
 }
 
+// 查询文章数
+let findPostCount = function() {
+    let _spl = `SELECT COUNT(*) AS count FROM posts`;
+    return query(_spl)
+}
 
 // 更新修改文章
 let updatePost = function (values) {
@@ -78,6 +86,7 @@ module.exports = {
     updatePostPv,
     findDataById,
     findTag,
+    findPostCount,
     findAllPost,
     updatePost,
     deletePost
