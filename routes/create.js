@@ -16,7 +16,8 @@ router.get('/create', async (ctx, next) => {
     
     await ctx.render('create',{
         session:ctx.session,
-        allTag: res	
+        allTag: res,
+        postsData: {}
     })
 })
 
@@ -25,15 +26,18 @@ router.get('/create', async (ctx, next) => {
  */
 router.post('/create', async (ctx, next) => {
 
-    let post = {
+    ctx.body = true;
+
+    let posts = {
         title: ctx.request.body.title,
         content: ctx.request.body.content,
+        content_html: ctx.request.body.content_html,
         u_id: ctx.session.id,
         t_id: ctx.request.body.tag
     }
 
     await userModel.insertPost([
-        post.title, post.content, post.u_id, post.t_id
+        posts.title, posts.content, posts.content_html, posts.u_id, posts.t_id
     ]).then(result => {
         ctx.body = true;
     }).catch(error => {

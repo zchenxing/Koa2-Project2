@@ -1,6 +1,6 @@
 .page-group-box {
     height: 30px;
-    margin: 100px 0;
+    margin: 40px 0 80px;
     text-align: center;
 }
 
@@ -24,9 +24,6 @@
     
 } 
 
-.page-group-item:hover {
-    
-}    
 
 .page-group-item-current {
     text-decoration: underline;

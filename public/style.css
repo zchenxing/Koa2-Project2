@@ -1,21 +1,13 @@
 
-/******** signin **********/
-.login-box {
-    position: relative;
-    margin: 0 auto;
-    top: 140px;
-    max-width: 400px;
-}
-
-
-
 /******************/
 .main-box {
     position: relative;      
     margin: 0 auto;  
-    max-width: 800px;
 }
 
 .content-center {
     padding: 100px 0 10px;    
 }
+
+
+/**********************************************/

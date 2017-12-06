@@ -42,6 +42,8 @@ app.use(session({
 }))
 
 app.use(mount('/static', static(path.join(__dirname + '/public'))))
+app.use(mount('/js', static(path.join(__dirname + '/js'))))
+app.use(mount('/images', static(path.join(__dirname + '/images'))))
 
 
 app.use(views(path.join(__dirname + '/views'), {

@@ -48,6 +48,9 @@
                             <a href="/system/create">发表文章</a>
                         </li>
                         <li>
+                            <a href="#">标签管理</a>
+                        </li>
+                        <li>
                             <a href="javascript:void(0)" class="signout">登出</a>
                         </li>
                     <%} else {%>
@@ -55,7 +58,7 @@
                             <a href="/system/posts">全部文章</a>
                         </li>
                         <li>
-                            <a href="/system/signin">登录</a>
+                            <a href="/system/login">登录</a>
                         </li>
                         <li>
                             <a href="/system/signup">注册</a>
@@ -77,7 +80,7 @@
                 success: function (msg) {
                     if (msg) {
                         alert('登出成功')
-                        window.location.href = "/system/signin"
+                        window.location.href = "/system/login"
                     }
                 },
                 error: function () {

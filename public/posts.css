@@ -6,3 +6,14 @@
 .post-item-title{ 
     margin: 25px 0 10px;
 }
+
+
+.posts-item-line {
+
+    height: 40px;
+    line-height: 40px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -2,16 +2,16 @@ const router = require('koa-router')()
 const userModel = require('../controller/taskDB')
 const md5 = require('md5')
 
-router.get('/signin', async(ctx, next) => {
+router.get('/login', async(ctx, next) => {
 
-    await ctx.render('signin', {
+    await ctx.render('login', {
         session: ctx.session
     })
 })
 
 
 
-router.post('/signin', async(ctx, next) => {
+router.post('/login', async(ctx, next) => {
 
     let name = ctx.request.body.name;
     let password = ctx.request.body.password;

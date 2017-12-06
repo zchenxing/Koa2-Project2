@@ -28,6 +28,7 @@ posts =
         id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(40) NOT NULL,
         content TEXT NOT NULL,
+        content_html TEXT NOT NULL,
         pv INT(10) NOT NULL COMMENT '浏览量',
         u_id INT(5) NOT NULL,
         t_id INT(3) NOT NULL,

@@ -5,11 +5,12 @@ const posts = require('./posts')
 const signout = require('./signout')
 const create = require('./create')
 const preview = require('./preview')
+const edit = require('./edit')
 
 const API = '/system';
 
 router.get('/', async(ctx, next) => {
-    ctx.redirect('system/signin');
+    ctx.redirect('system/login');
 })
 
 
@@ -21,5 +22,6 @@ router
     .use( API, signout.routes(), signout.allowedMethods() )
     .use( API, create.routes(), create.allowedMethods() )
     .use( API, preview.routes(), preview.allowedMethods() )
+    .use( API, edit.routes(), edit.allowedMethods() )
 
 module.exports = router;

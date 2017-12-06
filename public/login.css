@@ -1,0 +1,54 @@
+.bg-box {
+    position: absolute;
+    background-position: center center;
+    background: url('/images/bg-1.png') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.login-wrap {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 400px;
+    height: 370px;
+    margin-left: -200px;
+    background: rgba(50, 50, 50, .4);
+    padding: 60px 20px 30px 20px;
+    color: white;
+}
+
+.form-horizontal .login-btn {
+    border: none;
+    width: 100%;
+    background: #00b4ef;
+    text-transform: capitalize;
+    transition: all 0.5s ease 0s;
+}
+
+
+.form-horizontal .login-btn:hover {
+    background: #1D8CE0;
+    color: white;
+}
+
+
+.form-horizontal .btn-link {
+    float: right;
+    color: white;
+}
+
+
+.form-horizontal .form-group {
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 460px) {
+
+    .login-wrap {
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+    }
+}

@@ -1,3 +1,4 @@
+
 const router = require('koa-router')()
 const userModel = require('../controller/taskDB')
 const querystring = require('querystring');  
@@ -7,10 +8,8 @@ const querystring = require('querystring');
  */
 router.get('/posts', async (ctx,next)=>{
     
-    console.log('获取url ? 参数', querystring.parse(ctx.querystring))
-
-    let postList = [], 
-        limit = 5
+    let postsList = [], 
+        limit = 10,
         totalPage = 0;
         params = querystring.parse(ctx.querystring)
 
@@ -24,17 +23,32 @@ router.get('/posts', async (ctx,next)=>{
 
     // 按页查询数据
     await userModel.findAllPost(page, limit).then(result => {
-        postList = result;       
+        postsList = result;       
     })
+
 
     await ctx.render('posts', {
         session: ctx.session,
-        postList: postList,
+        postsList: postsList,
         totalPage: totalPage,
         currentPage: page
     })
 })
 
+
+
+router.post('/posts/delete', async (ctx, next) => {
+
+    let params = querystring.parse(ctx.querystring);
+
+    await userModel.deletePost(params.id)
+        .then(() => {
+            ctx.body = true;            
+        })
+        .catch(() => {
+            ctx.body = false;            
+        })
+})
 
 module.exports = router;
 
